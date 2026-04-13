@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StealthTube</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="card">
+      <header class="header">
+        <div class="logo" aria-hidden="true"><span class="logo-mark"></span></div>
+        <div class="title-block">
+          <h1>StealthTube</h1>
+          <p class="subtitle" id="status-text">Loading…</p>
+        </div>
+        <button class="icon-btn" id="panic-btn" title="Wipe last watched video from history" aria-label="Panic: wipe last video">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="currentColor" d="M6 7h12l-1 13a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 7Zm3-3h6l1 2H8l1-2Z"/>
+          </svg>
+        </button>
+      </header>
+
+      <nav class="tabs" role="tablist">
+        <button class="tab active" data-tab="main" role="tab" aria-selected="true">Stealth</button>
+        <button class="tab" data-tab="stats" role="tab" aria-selected="false">Stats</button>
+        <button class="tab" data-tab="settings" role="tab" aria-selected="false" title="Settings">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <path fill="currentColor" d="M19.14 12.94a7.49 7.49 0 0 0 0-1.88l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.42 7.42 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54a7.42 7.42 0 0 0-1.62.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.84a.5.5 0 0 0 .12.64l2.03 1.58a7.49 7.49 0 0 0 0 1.88L2.83 14.5a.5.5 0 0 0-.12.64l1.92 3.32a.5.5 0 0 0 .6.22l2.39-.96c.5.38 1.05.7 1.62.94l.36 2.54a.5.5 0 0 0 .5.42h3.84a.5.5 0 0 0 .5-.42l.36-2.54c.57-.24 1.12-.56 1.62-.94l2.39.96a.5.5 0 0 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.56ZM12 15.5A3.5 3.5 0 1 1 15.5 12 3.5 3.5 0 0 1 12 15.5Z"/>
+          </svg>
+        </button>
+        <button class="tab" data-tab="about" role="tab" aria-selected="false" title="Support">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Main panel -->
+      <section class="panel active" data-panel="main" role="tabpanel">
+        <div class="toggle-row">
+          <span class="toggle-label">Stealth Mode</span>
+          <label class="switch" for="stealth-toggle">
+            <input type="checkbox" id="stealth-toggle" />
+            <span class="slider" aria-hidden="true"></span>
+          </label>
+        </div>
+        <div class="info">
+          <p>Watch logged in (Premium stays active) without polluting your history or recommendations.</p>
+          <ul>
+            <li>Blocks playback &amp; watch-time telemetry</li>
+            <li>Blocks tracking pixels and feedback pings</li>
+            <li>Cookies &amp; auth are left untouched</li>
+          </ul>
+        </div>
+        <div class="disclaimer-box">
+          <svg class="disclaimer-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+          </svg>
+          <p>Note: Auto-Stealth is ~95% accurate based on available metadata. For 100% privacy assurance (e.g., during sensitive sessions), I recommend toggling <strong>Manual Stealth ON</strong>.</p>
+        </div>
+      </section>
+
+      <!-- Stats panel -->
+      <section class="panel" data-panel="stats" role="tabpanel" hidden>
+        <h2 class="panel-title">Ghost Stats</h2>
+        <div class="stat">
+          <div class="stat-row"><span>Videos ghosted</span><strong id="stat-ghosted">0</strong></div>
+          <div class="bar"><div class="bar-fill" id="bar-ghosted"></div></div>
+        </div>
+        <div class="stat">
+          <div class="stat-row"><span>Pings blocked (est.)</span><strong id="stat-pings">0</strong></div>
+          <div class="bar"><div class="bar-fill" id="bar-pings"></div></div>
+        </div>
+        <div class="stat">
+          <div class="stat-row"><span>Time in stealth</span><strong id="stat-time">0m</strong></div>
+          <div class="bar"><div class="bar-fill" id="bar-time"></div></div>
+        </div>
+        <div class="confirm-reset-wrapper">
+          <button class="reset-btn" id="reset-stats">Reset Statistics</button>
+          <div class="confirm-reset-prompt" id="reset-confirmation" hidden>
+            <span class="confirm-text">Are you sure?</span>
+            <div class="confirm-actions">
+              <button class="btn-confirm-yes" id="reset-yes">Yes, reset</button>
+              <button class="btn-confirm-cancel" id="reset-cancel">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings panel -->
+      <section class="panel" data-panel="settings" role="tabpanel" hidden>
+        <div class="toggle-row compact">
+          <span class="toggle-label">Enable Auto-Stealth</span>
+          <label class="switch small" for="auto-toggle">
+            <input type="checkbox" id="auto-toggle" />
+            <span class="slider" aria-hidden="true"></span>
+          </label>
+        </div>
+
+        <div class="disclaimer-box compact">
+          <svg class="disclaimer-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+          </svg>
+          <p>~95% accurate. For total privacy, toggle Manual Stealth ON.</p>
+        </div>
+
+        <section class="settings-group">
+          <h3 class="group-title">Quick Presets</h3>
+          <p class="group-hint">Pick categories to auto-stealth.</p>
+          <div class="preset-list" id="preset-list"><!-- populated by popup.js --></div>
+        </section>
+
+        <section class="settings-group">
+          <h3 class="group-title">Custom Rules</h3>
+          <label class="field">
+            <span>Custom keywords</span>
+            <textarea id="keywords-input" rows="3" placeholder="One per line, e.g.&#10;reaction&#10;tier list"></textarea>
+          </label>
+          <label class="field">
+            <span>Blacklisted channels</span>
+            <textarea id="channels-input" rows="3" placeholder="One per line, e.g.&#10;Mr Beast"></textarea>
+          </label>
+        </section>
+
+        <button class="primary-btn" id="save-settings">Save</button>
+        <p class="hint">Matches are case-insensitive and ignore punctuation, so "D.r.a.m.a" still trips the Drama preset.</p>
+
+        <div class="note-box">
+          <svg class="note-icon" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true">
+            <path fill="currentColor" d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm.75 12h-1.5v-1.5h1.5V14Zm0-3h-1.5V6h1.5v5Z"/>
+          </svg>
+          <p>Auto-detection relies on video metadata (Title, Description, and Hidden Tags). If a creator provides no metadata or tags, stealth mode might not trigger automatically. Use the Channel Blacklist for 100% reliability on specific creators.</p>
+        </div>
+      </section>
+
+      <!-- About panel -->
+      <section class="panel" data-panel="about" role="tabpanel" hidden>
+        <h2 class="panel-title">Support StealthTube</h2>
+        <p class="about-text">StealthTube is open-source. If it helped you reclaim your focus, consider supporting the project!</p>
+        <div class="about-links">
+          <a href="https://github.com/costin-cernea/youtube-stealth-mode-extension" target="_blank" rel="noopener" class="about-btn github-btn">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path fill="currentColor" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/>
+            </svg>
+            View Source on GitHub
+          </a>
+          <a href="https://www.buymeacoffee.com" target="_blank" rel="noopener" class="about-btn coffee-btn">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path fill="currentColor" d="M2 21h18v-2H2v2ZM20 8h-2V5H4v3H2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1h2a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2Zm0 3h-2v-1h2v1Z"/>
+            </svg>
+            Buy Me a Coffee
+          </a>
+        </div>
+        <p class="about-version" id="about-version"></p>
+      </section>
+
+      <footer class="footer">
+        <span class="footer-left">Algorithm protected: <strong id="footer-count">0</strong> videos</span>
+        <span class="footer-right" id="version"></span>
+      </footer>
+    </main>
+
+    <script src="browser-polyfill.js"></script>
+    <script src="config.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

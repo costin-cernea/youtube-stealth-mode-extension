@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1001,
+    "priority": 1000,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||youtube.com/api/stats/playback",
+      "resourceTypes": ["xmlhttprequest", "ping", "image", "other"]
+    }
+  },
+  {
+    "id": 1002,
+    "priority": 1000,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||youtube.com/api/stats/watchtime",
+      "resourceTypes": ["xmlhttprequest", "ping", "image", "other"]
+    }
+  },
+  {
+    "id": 1003,
+    "priority": 1000,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||youtube.com/ptracking",
+      "resourceTypes": ["xmlhttprequest", "ping", "image", "other"]
+    }
+  }
+]
