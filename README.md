@@ -133,4 +133,4 @@ If StealthTube helped you reclaim your focus, consider supporting the project:
 
 ## License
 
-MIT
+GPLv3
