@@ -45,17 +45,8 @@ html, body {
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: var(--accent);
-  display: grid;
-  place-items: center;
   flex-shrink: 0;
-}
-
-.logo-mark {
-  width: 14px;
-  height: 10px;
-  background: #fff;
-  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  object-fit: cover;
 }
 
 .title-block { flex: 1; min-width: 0; }

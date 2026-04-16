@@ -36,26 +36,59 @@ Instantly wipe the last watched video from your YouTube watch history with one c
 
 ## Installation
 
+### Build Once (Required)
+
+This repo now builds browser-specific extension folders:
+
+```bash
+node build.js
+```
+
+Build output:
+- `dist/chrome` -- load this in Chromium browsers
+- `dist/firefox` -- load this in Firefox
+
 ### Chrome / Edge / Brave (Chromium)
 
 1. Download or clone this repository:
    ```
    git clone https://github.com/costin-cernea/youtube-stealth-mode-extension.git
    ```
-2. Open your browser and navigate to `chrome://extensions` (or `edge://extensions`)
-3. Enable **Developer mode** (toggle in the top-right corner)
-4. Click **Load unpacked**
-5. Select the `youtube-stealth-mode-extension` folder
-6. Pin the StealthTube icon in your toolbar, click it, and flip the switch
+2. Build the browser-specific package:
+   ```
+   node build.js
+   ```
+3. Open your browser and navigate to `chrome://extensions` (or `edge://extensions`)
+4. Enable **Developer mode** (toggle in the top-right corner)
+5. Click **Load unpacked**
+6. Select the `dist/chrome` folder
+7. Pin the StealthTube icon in your toolbar, click it, and flip the switch
 
 ### Firefox
 
 1. Download or clone this repository
-2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
-3. Click **Load Temporary Add-on**
-4. Select the `manifest.json` file from the extension folder
+2. Build the browser-specific package:
+   ```
+   node build.js
+   ```
+3. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
+4. Click **Load Temporary Add-on**
+5. Select `dist/firefox/manifest.json`
 
 > **Note:** Firefox Manifest V3 is supported on Firefox 115+. The `browser_specific_settings.gecko` block provides the required add-on ID. For permanent installation, sign and package with [web-ext](https://github.com/mozilla/web-ext).
+
+---
+
+## Public Repo Checklist
+
+Before publishing this repo publicly, verify these basics:
+
+- Confirm the project name and description are clear for first-time visitors
+- Ensure screenshots/GIFs are up to date (if you add them)
+- Keep setup steps copy-paste friendly (`git clone`, `node build.js`, load from `dist/...`)
+- Double-check all links (support, docs, license)
+- Verify no secrets/tokens are committed (none are required for this project)
+- Keep `dist/` out of git (generated artifacts should not be versioned)
 
 ---
 

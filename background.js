@@ -527,15 +527,6 @@ api.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   } catch (_) {}
 });
 
-// Optional debug counter for unpacked builds.
-try {
-  if (api.declarativeNetRequest && api.declarativeNetRequest.onRuleMatchedDebug) {
-    api.declarativeNetRequest.onRuleMatchedDebug.addListener((info) => {
-      log("DNR rule matched:", info.rule && info.rule.ruleId, info.request && info.request.url);
-    });
-  }
-} catch (_) {}
-
 // ---------- ytInitialData extractor ----------
 
 function ytDataExtractor() {
