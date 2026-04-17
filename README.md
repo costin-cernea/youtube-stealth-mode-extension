@@ -1,8 +1,23 @@
-# StealthTube
+# StealthTube 🥷
 
 **Reclaim your YouTube focus.**
 
-Watch YouTube logged in -- keep your Premium benefits (no ads, background play) -- without polluting your watch history or recommendations. StealthTube intercepts tracking telemetry at the network level so YouTube never learns what you watched in stealth mode.
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v4.1.0-green.svg)](https://chromewebstore.google.com/detail/dlonngfflmflglgfgooiidejppeijcpee)
+[![Open Source](https://img.shields.io/badge/Open_Source-GPLv3-blue.svg)](LICENSE)
+
+Watch YouTube logged in — keep your Premium benefits (no ads, background play) — without polluting your watch history or recommendations. StealthTube intercepts tracking telemetry at the network level so YouTube never learns what you watched in stealth mode.
+
+---
+
+## 📸 Screenshots
+
+| 🏠 Home Interface | 📊 Privacy Stats | ⚙️ Custom Rules |
+|---|---|---|
+| <img src="assets/screenshots/yt-homepage.png" width="300"> | <img src="assets/screenshots/stats.png" width="300"> | <img src="assets/screenshots/settings.png" width="300"> |
+
+| 🔴 Stealth Active Mode | 🖥️ Full Screen Experience |
+|---|---|
+| <img src="assets/screenshots/stealth-active2.png" width="450"> | <img src="assets/screenshots/full-screen.png" width="450"> |
 
 ---
 
