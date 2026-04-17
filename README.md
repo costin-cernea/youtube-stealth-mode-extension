@@ -17,7 +17,7 @@ Watch YouTube logged in — keep your Premium benefits (no ads, background play)
 
 | 🔴 Stealth Active Mode | 🖥️ Full Screen Experience |
 |---|---|
-| <img src="assets/screenshots/stealth-active2.png" width="450"> | <img src="assets/screenshots/full-screen.png" width="450"> |
+| <img src="assets/screenshots/stealth-active.png" width="450"> | <img src="assets/screenshots/full-screen.png" width="450"> |
 
 ---
 
