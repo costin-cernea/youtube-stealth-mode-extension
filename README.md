@@ -2,8 +2,8 @@
 
 **Reclaim your YouTube focus.**
 
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/ID_EXTENSIE_CHROME?label=Chrome%20Web%20Store&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/stealthtube/dlonngfflmfglgfgoolldejppeijcpee)
-[![Firefox Add-ons](https://img.shields.io/amo/v/SLUG_EXTENSIE_FIREFOX?label=Firefox%20Add-ons&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/en-GB/firefox/addon/stealthtube/)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/dlonngfflmfglgfgoolldejppeijcpee?label=Chrome%20Web%20Store&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/stealthtube/dlonngfflmfglgfgoolldejppeijcpee)
+[![Firefox Add-ons](https://img.shields.io/amo/v/stealthtube?label=Firefox%20Add-ons&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/en-GB/firefox/addon/stealthtube/)
 [![Open Source](https://img.shields.io/badge/Open_Source-GPLv3-blue.svg)](LICENSE)
 
 
