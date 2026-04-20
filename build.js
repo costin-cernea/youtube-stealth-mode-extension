@@ -5,6 +5,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { execFileSync } = require("child_process");
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, "dist");
@@ -47,7 +48,10 @@ firefox.background = {
 firefox.browser_specific_settings = {
   gecko: {
     id: "stealthtube@costincernea.com",
-    strict_min_version: "115.0",
+    strict_min_version: "142.0",
+    data_collection_permissions: {
+      required: ["none"],
+    },
   },
 };
 
@@ -92,6 +96,16 @@ function buildTarget(name, manifest) {
   }
 
   console.log(`  ${name}/ -> ${dir}`);
+
+  // Create a clean zip (no __MACOSX, no .DS_Store) next to the folder.
+  const zipPath = path.join(DIST, `${name}.zip`);
+  if (fs.existsSync(zipPath)) fs.unlinkSync(zipPath);
+  execFileSync(
+    "zip",
+    ["-rX", zipPath, ".", "-x", "*.DS_Store", "-x", "__MACOSX*", "-x", "_metadata/*"],
+    { cwd: dir, stdio: "inherit" }
+  );
+  console.log(`  ${name}.zip -> ${zipPath}`);
 }
 
 // ---- run ----
