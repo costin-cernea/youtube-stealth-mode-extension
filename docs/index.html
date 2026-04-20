@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StealthTube — Watch YouTube without polluting your recommendations</title>
+<meta name="description" content="StealthTube lets you stay logged into YouTube (keep Premium) while preventing videos from polluting your watch history and recommendations." />
+<meta property="og:title" content="StealthTube — Private YouTube, without logging out" />
+<meta property="og:description" content="Keep Premium. Lose the algorithm. A free, open-source browser extension for Chrome and Firefox." />
+<meta property="og:type" content="website" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.45); }
+    50%      { box-shadow: 0 0 0 12px rgba(99, 102, 241, 0); }
+  }
+  .pulse-glow { animation: pulseGlow 2s infinite; }
+</style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased">
+
+<!-- Header -->
+<header class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
+  <a href="/" class="flex items-center gap-3">
+    <img src="img/logo.png" alt="StealthTube logo" class="h-9 w-9 rounded-lg" />
+    <span class="font-semibold tracking-tight">StealthTube</span>
+  </a>
+  <nav class="text-sm text-slate-400 hidden sm:flex gap-6">
+    <a href="#features" class="hover:text-white">Features</a>
+    <a href="https://github.com/costin-cernea/youtube-stealth-mode-extension" class="hover:text-white">GitHub</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="max-w-5xl mx-auto px-6 pt-16 pb-24 text-center">
+  <p class="inline-block rounded-full bg-slate-800/60 border border-slate-700 px-3 py-1 text-xs text-slate-300 mb-6">
+    Free · Open source · No tracking
+  </p>
+  <h1 class="text-4xl sm:text-6xl font-bold tracking-tight leading-tight">
+    Watch YouTube without <span class="bg-gradient-to-r from-indigo-400 to-fuchsia-400 bg-clip-text text-transparent">feeding the algorithm</span>.
+  </h1>
+  <p class="mt-6 text-lg text-slate-400 max-w-2xl mx-auto">
+    Stay logged in, keep Premium, and stop every video from polluting your watch history and recommendations. One click — browse in stealth.
+  </p>
+
+  <!-- Install buttons -->
+  <div id="installButtons" class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
+    <a id="btnChrome" href="https://chromewebstore.google.com/detail/stealthtube/dlonngfflmfglgfgoolldejppeijcpee"
+       class="inline-flex items-center gap-3 rounded-xl bg-white text-slate-900 px-6 py-3 font-medium hover:bg-slate-200 transition">
+      <svg viewBox="0 0 48 48" class="h-6 w-6" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="#fff"/><path fill="#EA4335" d="M24 8a16 16 0 0 1 13.86 8H24a8 8 0 0 0-7.48 5.17L10.2 10.29A15.95 15.95 0 0 1 24 8z"/><path fill="#FBBC05" d="M10.2 10.29l6.32 10.88A8 8 0 0 0 17 24a8 8 0 0 0 3.2 6.4L14.05 40A16 16 0 0 1 10.2 10.29z"/><path fill="#34A853" d="M24 32a8 8 0 0 0 7.15-4.4L37.86 40A16 16 0 0 1 14.05 40L20.2 30.4A8 8 0 0 0 24 32z"/><path fill="#4285F4" d="M32 24a8 8 0 0 1-.85 3.6L37.86 40A16 16 0 0 0 37.86 16H24a8 8 0 0 1 8 8z"/><circle cx="24" cy="24" r="5" fill="#4285F4"/></svg>
+      Add to Chrome
+    </a>
+    <a id="btnFirefox" href="https://addons.mozilla.org/en-GB/firefox/addon/stealthtube/"
+       class="inline-flex items-center gap-3 rounded-xl bg-indigo-500 text-white px-6 py-3 font-medium hover:bg-indigo-400 transition">
+      <svg viewBox="0 0 48 48" class="h-6 w-6" aria-hidden="true"><defs><radialGradient id="fx" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFCB30"/><stop offset="60%" stop-color="#FF7139"/><stop offset="100%" stop-color="#E91E63"/></radialGradient></defs><circle cx="24" cy="24" r="20" fill="url(#fx)"/><path fill="#0060DF" opacity=".25" d="M12 14c3 6 9 6 12 4s6-6 12-4c-2 14-14 22-24 18C6 28 6 20 12 14z"/></svg>
+      Add to Firefox
+    </a>
+  </div>
+  <p id="browserHint" class="mt-4 text-sm text-slate-500"></p>
+</section>
+
+<!-- Features -->
+<section id="features" class="max-w-5xl mx-auto px-6 pb-24">
+  <div class="grid sm:grid-cols-3 gap-4">
+    <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+      <h3 class="font-semibold mb-2">Keep your Premium</h3>
+      <p class="text-sm text-slate-400">No logging out, no second profile. StealthTube works while you stay signed in.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+      <h3 class="font-semibold mb-2">Clean recommendations</h3>
+      <p class="text-sm text-slate-400">Videos you watch in stealth don't touch your history or home feed.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+      <h3 class="font-semibold mb-2">Local &amp; private</h3>
+      <p class="text-sm text-slate-400">Runs entirely in your browser. No accounts, no servers, no tracking.</p>
+    </div>
+  </div>
+
+  <!-- Hero screenshot -->
+  <div class="mt-10 rounded-2xl border border-slate-800 bg-slate-900/40 p-2 sm:p-4">
+    <img src="img/stealth-active.png" alt="StealthTube active on a YouTube video" class="w-full rounded-xl" />
+  </div>
+
+  <!-- Screenshot gallery -->
+  <div class="mt-6 grid sm:grid-cols-3 gap-4">
+    <figure class="rounded-2xl border border-slate-800 bg-slate-900/40 p-2 overflow-hidden">
+      <img src="img/yt-homepage.png" alt="Clean YouTube homepage" class="w-full rounded-lg" />
+      <figcaption class="text-xs text-slate-500 px-2 py-2">Clean homepage, free of algorithmic noise.</figcaption>
+    </figure>
+    <figure class="rounded-2xl border border-slate-800 bg-slate-900/40 p-2 overflow-hidden">
+      <img src="img/settings.png" alt="StealthTube settings popup" class="w-full rounded-lg" />
+      <figcaption class="text-xs text-slate-500 px-2 py-2">Toggle stealth mode in one click.</figcaption>
+    </figure>
+    <figure class="rounded-2xl border border-slate-800 bg-slate-900/40 p-2 overflow-hidden">
+      <img src="img/stats.png" alt="Session stats" class="w-full rounded-lg" />
+      <figcaption class="text-xs text-slate-500 px-2 py-2">See what's being blocked in real time.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-slate-900">
+  <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row gap-4 justify-between text-sm text-slate-500">
+    <p>© <span id="year"></span> Costin Cernea. Not affiliated with YouTube or Google.</p>
+    <div class="flex gap-6">
+      <a href="https://github.com/costin-cernea" class="hover:text-white">GitHub</a>
+      <a href="https://github.com/costin-cernea/youtube-stealth-mode-extension/issues" class="hover:text-white">Report an Issue</a>
+      <a href="https://github.com/costin-cernea/youtube-stealth-mode-extension/blob/main/PRIVACY_POLICY.md" class="hover:text-white">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Smart browser detection: highlight the matching install button.
+  (function () {
+    const ua = navigator.userAgent;
+    const isFirefox = /Firefox\//.test(ua);
+    const isEdge    = /Edg\//.test(ua);
+    const isChromium = /Chrome\//.test(ua) && !isEdge; // Edge/Brave/Opera also resolve here
+    const btnChrome  = document.getElementById('btnChrome');
+    const btnFirefox = document.getElementById('btnFirefox');
+    const hint       = document.getElementById('browserHint');
+    const container  = document.getElementById('installButtons');
+
+    if (isFirefox) {
+      btnFirefox.classList.add('pulse-glow');
+      container.insertBefore(btnFirefox, btnChrome);
+      hint.textContent = 'Detected Firefox — recommended install on the left.';
+    } else if (isChromium) {
+      btnChrome.classList.add('pulse-glow');
+      hint.textContent = 'Detected a Chromium-based browser — use the Chrome Web Store link.';
+    }
+  })();
+</script>
+</body>
+</html>
