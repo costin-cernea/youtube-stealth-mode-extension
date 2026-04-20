@@ -96,27 +96,14 @@ Build output:
 
 ---
 
-## Public Repo Checklist
+<details>
+<summary>🔍 How to verify it's working (Technical)</summary>
 
-Before publishing this repo publicly, verify these basics:
-
-- Confirm the project name and description are clear for first-time visitors
-- Ensure screenshots/GIFs are up to date (if you add them)
-- Keep setup steps copy-paste friendly (`git clone`, `node build.js`, load from `dist/...`)
-- Double-check all links (support, docs, license)
-- Verify no secrets/tokens are committed (none are required for this project)
-- Keep `dist/` out of git (generated artifacts should not be versioned)
-
----
-
-## Verifying It Works
-
-1. Turn Stealth Mode **ON**
-2. Open YouTube, start a video, and open DevTools -> **Network** -> filter `stats/`. Requests to `playback`, `watchtime`, etc. should appear with status **(blocked)**
-3. Open [youtube.com/feed/history](https://www.youtube.com/feed/history) -- videos watched while Stealth Mode was ON should not appear
-4. Confirm Premium is still active (no ads, background play works)
-
----
+1. Turn Stealth Mode **ON**.
+2. Open YouTube, start a video, and open **DevTools (F12) -> Network**.
+3. Filter by `stats/`. You should see requests to `playback` or `watchtime` with a **(blocked)** status.
+4. Check your [YouTube History](https://www.youtube.com/feed/history) — the video should not appear there.
+</details>
 
 ## How It Works
 
