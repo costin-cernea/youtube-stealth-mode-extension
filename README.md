@@ -2,9 +2,10 @@
 
 **Reclaim your YouTube focus.**
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v4.1.0-green.svg)](https://chromewebstore.google.com/detail/stealthtube/dlonngfflmfglgfgoolldejppeijcpee)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/ID_EXTENSIE_CHROME?label=Chrome%20Web%20Store&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/stealthtube/dlonngfflmfglgfgoolldejppeijcpee)
+[![Firefox Add-ons](https://img.shields.io/amo/v/SLUG_EXTENSIE_FIREFOX?label=Firefox%20Add-ons&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/en-GB/firefox/addon/stealthtube/)
 [![Open Source](https://img.shields.io/badge/Open_Source-GPLv3-blue.svg)](LICENSE)
-[![Firefox](https://img.shields.io/badge/Firefox-Manual_Install-orange.svg?logo=firefox-browser&logoColor=white)](#installation)
+
 
 Watch YouTube logged in — keep your Premium benefits (no ads, background play) — without polluting your watch history or recommendations. StealthTube intercepts tracking telemetry at the network level so YouTube never learns what you watched in stealth mode.
 
